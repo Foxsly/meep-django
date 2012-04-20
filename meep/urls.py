@@ -15,4 +15,5 @@ urlpatterns = patterns('meep.views',
     url(r'^topics/(?P<topic_id>\d+)/?$', 'topic'),
     url(r'^topics/(?P<topic_id>\d+)/add_message/?$', 'add_message'),
     url(r'^topics/(?P<topic_id>\d+)/delete_message/?$', 'delete_message'),
+    url(r'^topics/(?P<topic_id>\d+)/delete_topic/?$', 'delete_topic'),
 )

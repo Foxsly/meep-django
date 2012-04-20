@@ -35,3 +35,8 @@ def add_topic(request):
     topic = Topic(title=request.POST['title'], author = topic_author)
     topic.save()
     return HttpResponseRedirect(reverse('meep.views.topic', args=(topic.id,)))
+
+def delete_topic(request, topic_id):
+    topic = Topic.objects.get(id=topic_id)
+    topic.delete()
+    return HttpResponseRedirect(reverse('meep.views.topics', args=()))

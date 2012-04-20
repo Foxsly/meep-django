@@ -26,8 +26,8 @@
     </form>
 
 
-    <form action='../delete_topic_action' method='POST'>
-        <input type='number' hidden='true' name='tid' value={{topic.id}}>
+    <form action='/meep/topics/{{topic.id}}/delete_topic' method='POST'>
+        {% csrf_token %}
         <input type='text' hidden='true' name='twill' value='twill'>
         <input type='submit' value='Delete topic'>
     </form>
