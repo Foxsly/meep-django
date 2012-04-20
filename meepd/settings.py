@@ -1,4 +1,5 @@
 # Django settings for meepd project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -105,7 +106,13 @@ ROOT_URLCONF = 'meepd.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'meepd.wsgi.application'
 
-TEMPLATE_DIRS = ('C:/Users/Tim/PycharmProjects/meepd/templates',)
+#TEMPLATE_DIRS = ('C:/Users/Tim/PycharmProjects/meepd/templates',)
+TEMPLATE_DIRS = (
+    os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__),"..")), "templates"),
+    )
+#filedir = os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__),"..")), "templates")
+#testdir = os.path.join(filedir, "test", "twill")
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',

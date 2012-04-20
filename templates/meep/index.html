@@ -1,0 +1,23 @@
+{% extends "meep/base.html" %}
+        
+{% block body %}
+    Welcome to meep!
+    {% if topic_list %}
+        <ul>
+            {% for topic in topic_list %}
+                <li><a href="/meep/topics/{{ topic.id }}/">{{ topic.title }}</a></li>
+            {% endfor %}
+
+        </ul>
+    {% endif %}
+        
+    <hr>
+    Create a new topic
+    <form action='/meep/topics/add_topic' method='POST'>
+        {% csrf_token %}
+        Title:<input type='text' name='title'><br>
+        <input type='text' hidden='true' name='twill' value='twill'>
+        <input type='submit' value='Create Topic'>
+    </form>
+
+{% endblock %}

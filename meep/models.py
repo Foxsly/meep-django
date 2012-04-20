@@ -15,7 +15,6 @@ class Topic(models.Model):
         return self.title
 
 class Message(models.Model):
-    title = models.TextField()
     post = models.TextField()
     created_at = models.DateTimeField()
     author = models.ForeignKey(User)

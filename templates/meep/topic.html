@@ -1,0 +1,38 @@
+{% extends "meep/base.html" %}
+
+{% block title %}meep: view topic!{% endblock title %}
+
+{% block body %}
+    {{topic.title}}<br><br>
+
+    {% for message in message_list %}
+        id: {{message.id}} <br>
+        title: {{message.title}} <br>
+        message: {{message.post}} <br>
+        author: {{message.author.username}} <br>
+
+        <form action='/meep/topics/{{topic.id}}/delete_message' method='POST'>
+            {% csrf_token %}
+            <input type='number' hidden='true' name='mid' value={{message.id}}>
+            <input type='text' hidden='true' name='twill' value='twill'>
+            <input type='submit' value='Delete message'>
+        </form>
+        <hr>
+    {% endfor %}
+
+    <form action='/meep/topics/{{topic.id}}/add_message' method='POST'>
+        {% csrf_token %}
+        Message:<input type='text' name='message'><br>
+        <input type='number' hidden='true' name='topicid' value={{topic.id}}><input type='submit'>
+    </form>
+
+
+    <form action='../delete_topic_action' method='POST'>
+        <input type='number' hidden='true' name='tid' value={{topic.id}}>
+        <input type='text' hidden='true' name='twill' value='twill'>
+        <input type='submit' value='Delete topic'>
+    </form>
+
+    <a href='/meep/topics/'>index</a>
+
+{% endblock body %}
